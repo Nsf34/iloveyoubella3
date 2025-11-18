@@ -156,7 +156,7 @@
         .main-hub {
             display: none;
             min-height: 100vh;
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             padding: 40px 20px;
         }
 
@@ -168,12 +168,17 @@
         .hub-header {
             text-align: center;
             margin-bottom: 60px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 40px;
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
         }
 
         .hub-header h1 {
             font-size: 3.5em;
             color: #fff;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
             margin-bottom: 15px;
         }
 
@@ -181,6 +186,7 @@
             font-size: 1.5em;
             color: #fff;
             font-style: italic;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
         }
 
         .seasons-grid {
@@ -293,14 +299,47 @@
             animation: fadeIn 0.8s ease-in;
         }
 
-        .winter-page { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-        .spring-page { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
-        .summer-page { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
-        .fall-page { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .winter-page { 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+        }
+        .spring-page { 
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            position: relative;
+        }
+        .summer-page { 
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            position: relative;
+        }
+        .fall-page { 
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            position: relative;
+        }
+
+        .season-emojis {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            top: 0;
+            left: 0;
+        }
+
+        .season-emoji {
+            position: absolute;
+            font-size: 30px;
+            animation: float infinite linear;
+            opacity: 0;
+            z-index: 1;
+            bottom: -50px;
+        }
 
         .season-content {
             max-width: 1000px;
             margin: 0 auto;
+            position: relative;
+            z-index: 10;
         }
 
         .back-btn {
@@ -432,6 +471,237 @@
             text-align: center;
         }
 
+        /* Timeline Page */
+        .timeline-page {
+            display: none;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 40px 20px;
+        }
+
+        .timeline-page.active {
+            display: block;
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        .timeline-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 60px 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .timeline-container {
+                padding: 40px 20px;
+            }
+            
+            .timer-display {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .timer-number {
+                font-size: 1.8em;
+            }
+            
+            .timer-label {
+                font-size: 0.85em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .timer-display {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .timeline-title {
+            font-size: 3em;
+            color: #764ba2;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .timer-display {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .timer-unit {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 30px 20px;
+            border-radius: 20px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 10px 30px rgba(118, 75, 162, 0.3);
+        }
+
+        .timer-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .timer-label {
+            font-size: 1em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* All Stickers Gallery Page */
+        .all-stickers-page {
+            display: none;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 40px 20px;
+        }
+
+        .all-stickers-page.active {
+            display: block;
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        .stickers-gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stickers-gallery-title {
+            font-size: 3em;
+            color: white;
+            text-align: center;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .stickers-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            padding: 20px;
+        }
+
+        .sticker-item {
+            background: white;
+            padding: 40px;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            min-height: 200px;
+        }
+
+        .sticker-item:hover {
+            transform: scale(1.05);
+        }
+
+        .sticker-item img {
+            max-width: 100%;
+            max-height: 150px;
+            object-fit: contain;
+        }
+
+        .sticker-emoji {
+            font-size: 5em;
+        }
+
+        /* Love Letter Page */
+        .love-letter-page {
+            display: none;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 40px 20px;
+            overflow: hidden;
+        }
+
+        .love-letter-page.active {
+            display: block;
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        .letter-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            position: relative;
+            min-height: 80vh;
+        }
+
+        .letter-content {
+            font-family: 'Georgia', serif;
+            font-size: 1.3em;
+            line-height: 2;
+            color: #333;
+            opacity: 0;
+            animation: scrollLetter 30s linear forwards;
+        }
+
+        @keyframes scrollLetter {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            5% {
+                opacity: 1;
+            }
+            95% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .letter-content h1 {
+            font-size: 2.5em;
+            color: #764ba2;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .letter-content p {
+            margin-bottom: 30px;
+            text-indent: 40px;
+        }
+
+        .letter-signature {
+            text-align: right;
+            font-style: italic;
+            margin-top: 50px;
+            font-size: 1.2em;
+        }
+
+        .continue-btn {
+            display: none;
+            margin: 30px auto 0;
+            padding: 20px 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Georgia', serif;
+        }
+
+        .continue-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(118, 75, 162, 0.4);
+        }
+
         /* Modal for full-size images */
         .modal {
             display: none;
@@ -473,7 +743,7 @@
         <div class="floating-hearts" id="floatingHearts"></div>
         <div class="password-container">
             <h1>Year Three ❤️</h1>
-            <p class="subtitle" id="rotatingText">hey butterchip...</p>
+            <p class="subtitle" id="rotatingText">i love you 💕</p>
             <div class="input-group">
                 <input type="password" id="passwordInput" placeholder="you know what to do...">
             </div>
@@ -491,32 +761,32 @@
     <div class="main-hub" id="mainHub">
         <div class="hub-header">
             <h1>Our Seasons Together</h1>
-            <p>Three years of love, laughter, and unforgettable memories</p>
+            <p>Another year of love and unforgettable memories with you ❤️</p>
         </div>
 
         <div class="seasons-grid">
             <div class="season-card winter-card" onclick="goToSeason('winter')">
                 <div class="season-icon">❄️</div>
                 <h2>Winter</h2>
-                <p>Cozy moments and snowy adventures</p>
+                <p>Cozy moments and good soup</p>
             </div>
 
             <div class="season-card spring-card" onclick="goToSeason('spring')">
                 <div class="season-icon">🌸</div>
                 <h2>Spring</h2>
-                <p>Blossoming love and new beginnings</p>
+                <p>Beautiful Ithaca weather ;) and enjoying time with you</p>
             </div>
 
             <div class="season-card summer-card" onclick="goToSeason('summer')">
                 <div class="season-icon">☀️</div>
                 <h2>Summer</h2>
-                <p>Sunshine and endless fun</p>
+                <p>Beach time and cantina's</p>
             </div>
 
             <div class="season-card fall-card" onclick="goToSeason('fall')">
                 <div class="season-icon">🍂</div>
                 <h2>Fall</h2>
-                <p>Colorful memories and cozy vibes</p>
+                <p>Watching you pick tomatoes and new beginnings together</p>
             </div>
         </div>
 
@@ -531,14 +801,39 @@
 
     <!-- Winter Page -->
     <div class="season-page winter-page" id="winterPage">
+        <div class="season-emojis" id="winterEmojis"></div>
         <div class="season-content">
             <button class="back-btn" onclick="backToHub()">← Back to Seasons</button>
             <h1 class="season-title">Winter Memories ❄️</h1>
             
             <div class="photo-gallery" id="winterGallery">
-                <!-- Photos will be added here - for now showing placeholders -->
+                <!-- Winter photos -->
                 <div class="photo-item" onclick="openModal(this)">
-                    <img src="https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=500" alt="Winter Memory">
+                    <img src="images/Winter/IMG_0896.jpeg" alt="Winter Memory">
+                </div>
+                <div class="photo-item" onclick="openModal(this)">
+                    <img src="images/Winter/IMG_4048.jpeg" alt="Winter Memory">
+                </div>
+                <div class="photo-item" onclick="openModal(this)">
+                    <img src="images/Winter/IMG_4323.jpeg" alt="Winter Memory">
+                </div>
+                <div class="photo-item" onclick="openModal(this)">
+                    <img src="images/Winter/IMG_4330.jpeg" alt="Winter Memory">
+                </div>
+                <div class="photo-item" onclick="openModal(this)">
+                    <img src="images/Winter/IMG_4429.jpeg" alt="Winter Memory">
+                </div>
+                <div class="photo-item" onclick="openModal(this)">
+                    <img src="images/Winter/IMG_5367.jpeg" alt="Winter Memory">
+                </div>
+                <div class="photo-item" onclick="openModal(this)">
+                    <img src="images/Winter/IMG_5385.jpeg" alt="Winter Memory">
+                </div>
+                <div class="photo-item" onclick="openModal(this)">
+                    <img src="images/Winter/IMG_5400.JPG" alt="Winter Memory">
+                </div>
+                <div class="photo-item" onclick="openModal(this)">
+                    <img src="images/Winter/IMG_9178.jpeg" alt="Winter Memory">
                 </div>
             </div>
 
@@ -553,10 +848,34 @@
 
     <!-- Spring, Summer, Fall pages (similar structure) -->
     <div class="season-page spring-page" id="springPage">
+        <div class="season-emojis" id="springEmojis"></div>
         <div class="season-content">
             <button class="back-btn" onclick="backToHub()">← Back to Seasons</button>
             <h1 class="season-title">Spring Memories 🌸</h1>
-            <div class="photo-gallery" id="springGallery"></div>
+            <div class="photo-gallery" id="springGallery">
+                <!-- Spring photos -->
+                <div class="photo-item" onclick="openModal(this)">
+                    <img src="images/Spring/IMG_5713.jpeg" alt="Spring Memory">
+                </div>
+                <div class="photo-item" onclick="openModal(this)">
+                    <img src="images/Spring/IMG_5965.jpeg" alt="Spring Memory">
+                </div>
+                <div class="photo-item" onclick="openModal(this)">
+                    <img src="images/Spring/IMG_5968.jpeg" alt="Spring Memory">
+                </div>
+                <div class="photo-item" onclick="openModal(this)">
+                    <img src="images/Spring/IMG_5995.jpeg" alt="Spring Memory">
+                </div>
+                <div class="photo-item" onclick="openModal(this)">
+                    <img src="images/Spring/IMG_7296.jpeg" alt="Spring Memory">
+                </div>
+                <div class="photo-item" onclick="openModal(this)">
+                    <img src="images/Spring/IMG_7632.jpeg" alt="Spring Memory">
+                </div>
+                <div class="photo-item" onclick="openModal(this)">
+                    <img src="images/Spring/IMG_7787.jpeg" alt="Spring Memory">
+                </div>
+            </div>
             <div class="season-message">
                 <p>Spring brought fresh starts and beautiful moments with you. 🌸</p>
             </div>
@@ -564,10 +883,43 @@
     </div>
 
     <div class="season-page summer-page" id="summerPage">
+        <div class="season-emojis" id="summerEmojis"></div>
         <div class="season-content">
             <button class="back-btn" onclick="backToHub()">← Back to Seasons</button>
             <h1 class="season-title">Summer Memories ☀️</h1>
-            <div class="photo-gallery" id="summerGallery"></div>
+            <div class="photo-gallery" id="summerGallery">
+                <!-- Summer photos -->
+                <div class="photo-item" onclick="openModal(this)">
+                    <img src="images/Summer/IMG_0133.jpeg" alt="Summer Memory">
+                </div>
+                <div class="photo-item" onclick="openModal(this)">
+                    <img src="images/Summer/IMG_0147.jpeg" alt="Summer Memory">
+                </div>
+                <div class="photo-item" onclick="openModal(this)">
+                    <img src="images/Summer/IMG_0522.jpeg" alt="Summer Memory">
+                </div>
+                <div class="photo-item" onclick="openModal(this)">
+                    <img src="images/Summer/IMG_0701.jpeg" alt="Summer Memory">
+                </div>
+                <div class="photo-item" onclick="openModal(this)">
+                    <img src="images/Summer/IMG_0784.jpeg" alt="Summer Memory">
+                </div>
+                <div class="photo-item" onclick="openModal(this)">
+                    <img src="images/Summer/IMG_9418.jpeg" alt="Summer Memory">
+                </div>
+                <div class="photo-item" onclick="openModal(this)">
+                    <img src="images/Summer/IMG_9434.jpeg" alt="Summer Memory">
+                </div>
+                <div class="photo-item" onclick="openModal(this)">
+                    <img src="images/Summer/IMG_9488.jpeg" alt="Summer Memory">
+                </div>
+                <div class="photo-item" onclick="openModal(this)">
+                    <img src="images/Summer/IMG_9530.jpeg" alt="Summer Memory">
+                </div>
+                <div class="photo-item" onclick="openModal(this)">
+                    <img src="images/Summer/IMG_9555.jpeg" alt="Summer Memory">
+                </div>
+            </div>
             <div class="season-message">
                 <p>Endless summer days filled with sunshine and your smile. ☀️</p>
             </div>
@@ -575,10 +927,49 @@
     </div>
 
     <div class="season-page fall-page" id="fallPage">
+        <div class="season-emojis" id="fallEmojis"></div>
         <div class="season-content">
             <button class="back-btn" onclick="backToHub()">← Back to Seasons</button>
             <h1 class="season-title">Fall Memories 🍂</h1>
-            <div class="photo-gallery" id="fallGallery"></div>
+            <div class="photo-gallery" id="fallGallery">
+                <!-- Fall photos -->
+                <div class="photo-item" onclick="openModal(this)">
+                    <img src="images/Fall/IMG_1012.jpeg" alt="Fall Memory">
+                </div>
+                <div class="photo-item" onclick="openModal(this)">
+                    <img src="images/Fall/IMG_1138.jpeg" alt="Fall Memory">
+                </div>
+                <div class="photo-item" onclick="openModal(this)">
+                    <img src="images/Fall/IMG_1170.jpeg" alt="Fall Memory">
+                </div>
+                <div class="photo-item" onclick="openModal(this)">
+                    <img src="images/Fall/IMG_1197.jpeg" alt="Fall Memory">
+                </div>
+                <div class="photo-item" onclick="openModal(this)">
+                    <img src="images/Fall/IMG_1214.jpeg" alt="Fall Memory">
+                </div>
+                <div class="photo-item" onclick="openModal(this)">
+                    <img src="images/Fall/IMG_1239.jpeg" alt="Fall Memory">
+                </div>
+                <div class="photo-item" onclick="openModal(this)">
+                    <img src="images/Fall/IMG_1929.jpeg" alt="Fall Memory">
+                </div>
+                <div class="photo-item" onclick="openModal(this)">
+                    <img src="images/Fall/IMG_2181.jpeg" alt="Fall Memory">
+                </div>
+                <div class="photo-item" onclick="openModal(this)">
+                    <img src="images/Fall/IMG_3516.jpeg" alt="Fall Memory">
+                </div>
+                <div class="photo-item" onclick="openModal(this)">
+                    <img src="images/Fall/IMG_7439.jpeg" alt="Fall Memory">
+                </div>
+                <div class="photo-item" onclick="openModal(this)">
+                    <img src="images/Fall/IMG_7732.jpeg" alt="Fall Memory">
+                </div>
+                <div class="photo-item" onclick="openModal(this)">
+                    <img src="images/Fall/IMG_8263.jpeg" alt="Fall Memory">
+                </div>
+            </div>
             <div class="season-message">
                 <p>Falling for you all over again, one autumn day at a time. 🍂</p>
             </div>
@@ -595,9 +986,104 @@
                 Press below!
             </div>
             <button class="vending-btn" onclick="getRandomSticker()">Get Sticker!</button>
-            <button class="vending-btn" onclick="showAllStickers()">View All Stickers</button>
+            <button class="vending-btn" onclick="goToAllStickers()">View All Stickers</button>
         </div>
-        <div class="sticker-waterfall" id="stickerWaterfall"></div>
+    </div>
+
+    <!-- Timeline Page -->
+    <div class="timeline-page" id="timelinePage">
+        <button class="back-btn" onclick="backToHub()">← Back to Hub</button>
+        <div class="timeline-container">
+            <h1 class="timeline-title">Our Time Together ⏰</h1>
+            <div class="timer-display">
+                <div class="timer-unit">
+                    <span class="timer-number" id="years">0</span>
+                    <span class="timer-label">Years</span>
+                </div>
+                <div class="timer-unit">
+                    <span class="timer-number" id="months">0</span>
+                    <span class="timer-label">Months</span>
+                </div>
+                <div class="timer-unit">
+                    <span class="timer-number" id="weeks">0</span>
+                    <span class="timer-label">Weeks</span>
+                </div>
+                <div class="timer-unit">
+                    <span class="timer-number" id="days">0</span>
+                    <span class="timer-label">Days</span>
+                </div>
+                <div class="timer-unit">
+                    <span class="timer-number" id="hours">0</span>
+                    <span class="timer-label">Hours</span>
+                </div>
+                <div class="timer-unit">
+                    <span class="timer-number" id="minutes">0</span>
+                    <span class="timer-label">Minutes</span>
+                </div>
+                <div class="timer-unit">
+                    <span class="timer-number" id="seconds">0</span>
+                    <span class="timer-label">Seconds</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- All Stickers Gallery -->
+    <div class="all-stickers-page" id="allStickersPage">
+        <button class="back-btn" onclick="backToStickers()">← Back to Sticker Machine</button>
+        <div class="stickers-gallery-container">
+            <h1 class="stickers-gallery-title">All Bella Stickers 💕</h1>
+            <div class="stickers-grid" id="stickersGrid">
+                <!-- Stickers will be added here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Love Letter Page -->
+    <div class="love-letter-page" id="loveLetterPage">
+        <button class="back-btn" onclick="backToHub()">← Back to Hub</button>
+        <div class="letter-container">
+            <div class="letter-content" id="letterContent">
+                <h1>Dear Bella,</h1>
+                
+                <p>
+                    Three years. It feels like yesterday we started this journey together, and yet it also 
+                    feels like you've been part of my life forever. Every day with you is a gift I never 
+                    want to take for granted.
+                </p>
+                
+                <p>
+                    This year has been incredible. From our spontaneous 3:30am BCD Tofu House runs to 
+                    watching you pick tomatoes in the garden, every moment with you is something special. 
+                    Whether we're exploring new restaurants, enjoying beautiful Ithaca weather, or just 
+                    spending quiet time together, I'm always amazed by how you make everything better.
+                </p>
+                
+                <p>
+                    You inspire me every single day with your work ethic, your kindness, and your beautiful 
+                    spirit. The way you light up a room, the way you care about the people around you, 
+                    and the way you make me laugh even on the hardest days - I fall more in love with you 
+                    all the time.
+                </p>
+                
+                <p>
+                    Thank you for three amazing years of adventures, late-night conversations, amazing meals, 
+                    and countless memories. Thank you for being patient with me, for supporting my dreams, 
+                    and for making every day an adventure.
+                </p>
+                
+                <p>
+                    Here's to another year of love, laughter, and all the soup and cantinas we can handle. 
+                    I love you more than words could ever express.
+                </p>
+                
+                <div class="letter-signature">
+                    Forever yours,<br>
+                    Nick ❤️
+                </div>
+            </div>
+            <button class="continue-btn" id="letterContinueBtn" onclick="backToHub()">Back to Home</button>
+        </div>
     </div>
 
     <!-- Image Modal -->
@@ -628,9 +1114,43 @@
 
         createFloatingHearts();
 
+        // Create seasonal emojis
+        function createSeasonEmojis(season) {
+            const container = document.getElementById(season + 'Emojis');
+            container.innerHTML = ''; // Clear existing
+            
+            let emojis = [];
+            switch(season) {
+                case 'winter':
+                    emojis = ['❄️', '⛄', '☃️', '🌨️', '❄️', '🧊', '🥶', '☕'];
+                    break;
+                case 'spring':
+                    emojis = ['🌸', '🌺', '🌼', '🌻', '🌷', '🦋', '🐝', '🌱'];
+                    break;
+                case 'summer':
+                    emojis = ['☀️', '🌊', '🏖️', '🍉', '🍦', '🌴', '😎', '🏄'];
+                    break;
+                case 'fall':
+                    emojis = ['🍂', '🍁', '🎃', '🍄', '🌰', '🦃', '🍎', '🌾'];
+                    break;
+            }
+            
+            for (let i = 0; i < 25; i++) {
+                const emoji = document.createElement('div');
+                emoji.className = 'season-emoji';
+                emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                emoji.style.left = Math.random() * 100 + '%';
+                const duration = Math.random() * 3 + 5;
+                emoji.style.animationDuration = duration + 's';
+                emoji.style.animationDelay = (Math.random() * 8) + 's';
+                const drift = (Math.random() - 0.5) * 100;
+                emoji.style.setProperty('--drift', drift + 'px');
+                container.appendChild(emoji);
+            }
+        }
+
         // Rotating funny messages
         const rotatingMessages = [
-            "hey beautiful...",
             "i love you 💕",
             "remember that 3:30am BCD run? 🍜",
             "you're the cutest",
@@ -639,7 +1159,7 @@
             "you make me so happy ❤️",
             "you make everything better",
             "can't wait for more late night food runs",
-            "luckiest guy alive right here"
+            "luckiest guy alive"
         ];
         
         let messageIndex = 0;
@@ -663,7 +1183,7 @@
                 document.getElementById('passwordPage').style.display = 'none';
                 document.getElementById('mainHub').classList.add('active');
             } else {
-                alert('Not quite, ButterChip! Try again 💕');
+                alert('Nope! Try again 💕');
             }
         }
 
@@ -678,10 +1198,11 @@
         function goToSeason(season) {
             document.getElementById('mainHub').classList.remove('active');
             document.getElementById(season + 'Page').classList.add('active');
+            createSeasonEmojis(season);
         }
 
         function backToHub() {
-            document.querySelectorAll('.season-page, .sticker-page').forEach(page => {
+            document.querySelectorAll('.season-page, .sticker-page, .timeline-page, .all-stickers-page, .love-letter-page').forEach(page => {
                 page.classList.remove('active');
             });
             document.getElementById('mainHub').classList.add('active');
@@ -693,16 +1214,87 @@
         }
 
         function goToTimeline() {
-            alert('Timeline feature coming soon! 💕');
+            document.getElementById('mainHub').classList.remove('active');
+            document.getElementById('timelinePage').classList.add('active');
+            updateTimer(); // Start the timer
+            setInterval(updateTimer, 1000); // Update every second
+        }
+
+        function goToAllStickers() {
+            document.getElementById('stickerPage').classList.remove('active');
+            document.getElementById('allStickersPage').classList.add('active');
+            loadAllStickers();
+        }
+
+        function backToStickers() {
+            document.getElementById('allStickersPage').classList.remove('active');
+            document.getElementById('stickerPage').classList.add('active');
+        }
+
+        // Timeline counter
+        function updateTimer() {
+            const startDate = new Date('November 24, 2022 00:00:00');
+            const now = new Date();
+            const diff = now - startDate;
+
+            const years = (diff / (1000 * 60 * 60 * 24 * 365.25)).toFixed(2);
+            const months = (diff / (1000 * 60 * 60 * 24 * 30.44)).toFixed(1);
+            const weeks = Math.floor(diff / (1000 * 60 * 60 * 24 * 7));
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor(diff / (1000 * 60));
+            const seconds = Math.floor(diff / 1000);
+
+            document.getElementById('years').textContent = years;
+            document.getElementById('months').textContent = months;
+            document.getElementById('weeks').textContent = weeks.toLocaleString();
+            document.getElementById('days').textContent = days.toLocaleString();
+            document.getElementById('hours').textContent = hours.toLocaleString();
+            document.getElementById('minutes').textContent = minutes.toLocaleString();
+            document.getElementById('seconds').textContent = seconds.toLocaleString();
         }
 
         function showLoveNote() {
-            alert('Dear ButterChip,\n\nThree years with you and every day feels like a gift. I love you more than words can say. ❤️\n\n- Nick');
+            document.getElementById('mainHub').classList.remove('active');
+            document.getElementById('loveLetterPage').classList.add('active');
+            
+            // Show the continue button after animation completes
+            setTimeout(() => {
+                document.getElementById('letterContinueBtn').style.display = 'block';
+            }, 30000); // 30 seconds to match the scroll animation
         }
 
         // Sticker machine
-        const bellaStickers = ['😊', '🥰', '😘', '💕', '✨', '🌟', '💖', '🎀', '🌸', '🦋', 
-                               '🍰', '☕', '📚', '🎨', '🎵', '💫', '🌈', '🎭', '🌺', '🧸'];
+        const bellaStickers = [
+            'images/Stickers/34A45B42-749C-4244-B426-6A91D87158E1.png',
+            'images/Stickers/40D6E63E-BD44-457F-A112-7967BAADED00.png',
+            'images/Stickers/90DC0607-C369-427C-BC05-3A08F38B8738.heics',
+            'images/Stickers/92C9DF6F-3D63-40D1-B911-AEB25F024D69.png',
+            'images/Stickers/974CF8A4-3650-4EBF-A0B3-56D5CB01E3F8.png',
+            'images/Stickers/19384E17-44E5-4E77-90EB-3EB0D6DD264C.png',
+            'images/Stickers/798259E2-1B69-42B5-828C-7E6AA85B4B9E.png',
+            'images/Stickers/884939F2-0DCD-41F8-8901-F8FFF97EBCE9.png',
+            'images/Stickers/2237882B-FDBA-414B-B81F-676B92DBDO63.heics',
+            'images/Stickers/A05F078C-30FB-4B11-B638-2770A84C43F3.png',
+            'images/Stickers/AF687BB2-BA9B-4A28-AFF3-5DAEDE59D837.heics',
+            'images/Stickers/BA46FA8A-6CBB-40B9-854B-6298BB294F51.png',
+            'images/Stickers/C1EA39F2-9733-4152-8A2D-05D3606FA00C.png',
+            'images/Stickers/C05AD6D5-D94A-45F4-AA80-B8C93488523E.heics',
+            'images/Stickers/D2E965A3-214B-4352-B572-B9BA2F05BE9F.png',
+            'images/Stickers/D89EFBB6-D10B-4D3A-8DCB-A05770226667.png',
+            'images/Stickers/DF65881F-1DFB-47A3-BCDC-DFDD64B51A14.png',
+            'images/Stickers/E763438F-C7A7-4469-9782-95F1A8629342.png',
+            'images/Stickers/EA52E571-E982-434D-935F-96DBAF61EF6C.heics',
+            'images/Stickers/EC5FF4C8-2669-4DB2-B15B-EF8DA814BC79.png',
+            'images/Stickers/EFEE568C-816B-43A8-99E1-A51CE3994EE0.png',
+            'images/Stickers/F1CAD420-C31B-49C5-93AF-2005C9108833 2.png',
+            'images/Stickers/F1CAD420-C31B-49C5-93AF-2005C9108833.png',
+            'images/Stickers/F3EEE5C0-FE27-4ED1-A8AF-84E555B6AF20.heics',
+            'images/Stickers/F8F100E6-A529-4480-AB54-3C9B16010D19.png',
+            'images/Stickers/F089D199-F499-41CE-AF98-351DEB1C5E34.png',
+            'images/Stickers/F1441B76-BDAA-45E8-99B3-261735411AC2.png',
+            'images/Stickers/FF62A58A-FB24-41F0-A2A8-FFC4F18B5DB2.heics'
+        ];
         
         function getRandomSticker() {
             const display = document.getElementById('stickerDisplay');
@@ -714,8 +1306,29 @@
             }, 10);
         }
 
-        function showAllStickers() {
-            alert('All Bella Stickers:\n\n' + bellaStickers.join('  '));
+        function loadAllStickers() {
+            const grid = document.getElementById('stickersGrid');
+            grid.innerHTML = ''; // Clear existing
+            
+            bellaStickers.forEach(sticker => {
+                const item = document.createElement('div');
+                item.className = 'sticker-item';
+                
+                // Check if it's a file path or emoji
+                if (sticker.startsWith('images/')) {
+                    const img = document.createElement('img');
+                    img.src = sticker;
+                    img.alt = 'Bella Sticker';
+                    item.appendChild(img);
+                } else {
+                    const emoji = document.createElement('div');
+                    emoji.className = 'sticker-emoji';
+                    emoji.textContent = sticker;
+                    item.appendChild(emoji);
+                }
+                
+                grid.appendChild(item);
+            });
         }
 
         // Image modal
