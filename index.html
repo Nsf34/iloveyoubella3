@@ -16,7 +16,7 @@
             min-height: 100vh;
             overflow-x: hidden;
         }
-n
+
         /* Password Page Styles */
         .password-page {
             min-height: 100vh;
@@ -1268,42 +1268,48 @@ n
         const bellaStickers = [
             'images/Stickers/34A45B42-749C-4244-B426-6A91D87158E1.png',
             'images/Stickers/40D6E63E-BD44-457F-A112-7967BAADED00.png',
-            'images/Stickers/90DC0607-C369-427C-BC05-3A08F38B8738.heics',
             'images/Stickers/92C9DF6F-3D63-40D1-B911-AEB25F024D69.png',
             'images/Stickers/974CF8A4-3650-4EBF-A0B3-56D5CB01E3F8.png',
             'images/Stickers/19384E17-44E5-4E77-90EB-3EB0D6DD264C.png',
             'images/Stickers/798259E2-1B69-42B5-828C-7E6AA85B4B9E.png',
             'images/Stickers/884939F2-0DCD-41F8-8901-F8FFF97EBCE9.png',
-            'images/Stickers/2237882B-FDBA-414B-B81F-676B92DBDO63.heics',
             'images/Stickers/A05F078C-30FB-4B11-B638-2770A84C43F3.png',
-            'images/Stickers/AF687BB2-BA9B-4A28-AFF3-5DAEDE59D837.heics',
             'images/Stickers/BA46FA8A-6CBB-40B9-854B-6298BB294F51.png',
             'images/Stickers/C1EA39F2-9733-4152-8A2D-05D3606FA00C.png',
-            'images/Stickers/C05AD6D5-D94A-45F4-AA80-B8C93488523E.heics',
             'images/Stickers/D2E965A3-214B-4352-B572-B9BA2F05BE9F.png',
             'images/Stickers/D89EFBB6-D10B-4D3A-8DCB-A05770226667.png',
             'images/Stickers/DF65881F-1DFB-47A3-BCDC-DFDD64B51A14.png',
             'images/Stickers/E763438F-C7A7-4469-9782-95F1A8629342.png',
-            'images/Stickers/EA52E571-E982-434D-935F-96DBAF61EF6C.heics',
             'images/Stickers/EC5FF4C8-2669-4DB2-B15B-EF8DA814BC79.png',
             'images/Stickers/EFEE568C-816B-43A8-99E1-A51CE3994EE0.png',
             'images/Stickers/F1CAD420-C31B-49C5-93AF-2005C9108833 2.png',
             'images/Stickers/F1CAD420-C31B-49C5-93AF-2005C9108833.png',
-            'images/Stickers/F3EEE5C0-FE27-4ED1-A8AF-84E555B6AF20.heics',
             'images/Stickers/F8F100E6-A529-4480-AB54-3C9B16010D19.png',
             'images/Stickers/F089D199-F499-41CE-AF98-351DEB1C5E34.png',
-            'images/Stickers/F1441B76-BDAA-45E8-99B3-261735411AC2.png',
-            'images/Stickers/FF62A58A-FB24-41F0-A2A8-FFC4F18B5DB2.heics'
+            'images/Stickers/F1441B76-BDAA-45E8-99B3-261735411AC2.png'
         ];
         
         function getRandomSticker() {
             const display = document.getElementById('stickerDisplay');
             const randomSticker = bellaStickers[Math.floor(Math.random() * bellaStickers.length)];
-            display.textContent = randomSticker;
-            display.style.animation = 'none';
-            setTimeout(() => {
-                display.style.animation = 'fadeIn 0.5s ease-in';
-            }, 10);
+            
+            // Clear previous content
+            display.innerHTML = '';
+            
+            // Check if it's a .heics file (won't work in browser)
+            if (randomSticker.endsWith('.heics')) {
+                display.innerHTML = '<div style="font-size: 1.2em; padding: 20px;">⚠️ HEICS format not supported.<br>Please convert to PNG/JPG</div>';
+                return;
+            }
+            
+            // Create and display image
+            const img = document.createElement('img');
+            img.src = randomSticker;
+            img.style.maxWidth = '100%';
+            img.style.maxHeight = '100%';
+            img.style.objectFit = 'contain';
+            img.alt = 'Bella Sticker';
+            display.appendChild(img);
         }
 
         function loadAllStickers() {
