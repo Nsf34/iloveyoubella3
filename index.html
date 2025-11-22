@@ -1165,6 +1165,37 @@
 
         createFloatingHearts();
 
+
+        // Random favicon from Bella's stickers
+        function setRandomFavicon() {
+            const faviconStickers = [
+                'images/Stickers/34A45B42-749C-4244-B426-6A91D87158E1.png',
+                'images/Stickers/40D6E63E-BD44-457F-A112-7967BAADED00.png',
+                'images/Stickers/92C9DF6F-3D63-40D1-B911-AEB25F024D69.png',
+                'images/Stickers/974CF8A4-3650-4EBF-A0B3-56D5CB01E3F8.png',
+                'images/Stickers/19384E17-44E5-4E77-90EB-3EB0D6DD264C.png',
+                'images/Stickers/798259E2-1B69-42B5-828C-7E6AA85B4B9E.png',
+                'images/Stickers/884939F2-0DCD-41F8-8901-F8FFF97EBCE9.png',
+                'images/Stickers/A05F078C-30FB-4B11-B638-2770A84C43F3.png',
+                'images/Stickers/BA46FA8A-6CBB-40B9-854B-6298BB294F51.png',
+                'images/Stickers/C1EA39F2-9733-4152-8A2D-05D3606FA00C.png'
+            ];
+            
+            const randomSticker = faviconStickers[Math.floor(Math.random() * faviconStickers.length)];
+            
+            // Create or update favicon link
+            let link = document.querySelector("link[rel~='icon']");
+            if (!link) {
+                link = document.createElement('link');
+                link.rel = 'icon';
+                document.head.appendChild(link);
+            }
+            link.href = randomSticker;
+        }
+
+        // Set random favicon on page load
+        setRandomFavicon();
+        
         // Create seasonal emojis
         function createSeasonEmojis(season) {
             const container = document.getElementById(season + 'Emojis');
