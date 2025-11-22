@@ -737,6 +737,82 @@
         }
     </style>
 </head>
+<!-- Love Map Page -->
+<div class="love-map-page" id="loveMapPage">
+    <button class="back-btn" onclick="backToHub()">← Back to Hub</button>
+    <div class="map-container">
+        <h1 class="map-title">Our Love Map 🗺️</h1>
+        <p class="map-subtitle">Hover over the pins to see our memories together</p>
+
+        <div class="map-wrapper">
+            <div class="map-background"></div>
+            
+            <svg class="love-path" viewBox="0 0 1200 600">
+                <path class="path-line" d="M 200,150 Q 400,100 500,250 T 800,400 L 950,300" />
+            </svg>
+
+            <div class="pin" style="top: 15%; left: 15%;">
+                <div class="pin-marker"></div>
+                <div class="memory-card">
+                    <h3>BCD Tofu House</h3>
+                    <div class="date">3:30 AM Adventure</div>
+                    <p>That crazy late-night run for Korean food. Best soup ever 🍜❤️</p>
+                </div>
+            </div>
+
+            <div class="pin" style="top: 35%; left: 40%;">
+                <div class="pin-marker"></div>
+                <div class="memory-card">
+                    <h3>Ithaca, NY</h3>
+                    <div class="date">Spring 2024</div>
+                    <p>Beautiful Ithaca weather and so many good meals together 🌸</p>
+                </div>
+            </div>
+
+            <div class="pin" style="top: 60%; left: 65%;">
+                <div class="pin-marker"></div>
+                <div class="memory-card">
+                    <h3>The Beach</h3>
+                    <div class="date">Summer 2024</div>
+                    <p>Surf City bike rides and pickleball! ☀️🏖️</p>
+                </div>
+            </div>
+
+            <div class="pin" style="top: 45%; left: 80%;">
+                <div class="pin-marker"></div>
+                <div class="memory-card">
+                    <h3>Cantinas</h3>
+                    <div class="date">Summer Nights</div>
+                    <p>Those nachos were SO good 🌮💕</p>
+                </div>
+            </div>
+
+            <div class="pin" style="top: 25%; left: 55%;">
+                <div class="pin-marker"></div>
+                <div class="memory-card">
+                    <h3>The Garden</h3>
+                    <div class="date">Fall 2024</div>
+                    <p>Watching you pick tomatoes was the cutest 🍅❤️</p>
+                </div>
+            </div>
+
+            <div class="pin" style="top: 70%; left: 30%;">
+                <div class="pin-marker"></div>
+                <div class="memory-card">
+                    <h3>Houston's</h3>
+                    <div class="date">New #1 Favorite</div>
+                    <p>Our new favorite spot! 🍽️</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="map-legend">
+            <span class="heart">❤️</span>
+            <span>Hover over pins to reveal our memories</span>
+            <span class="heart">❤️</span>
+        </div>
+    </div>
+</div>
 <body>
     <!-- Password Page -->
     <div class="password-page" id="passwordPage">
@@ -1242,7 +1318,7 @@
         }
 
         function backToHub() {
-            document.querySelectorAll('.season-page, .sticker-page, .timeline-page, .all-stickers-page, .love-letter-page').forEach(page => {
+            document.querySelectorAll('.season-page, .sticker-page, .timeline-page, .all-stickers-page, .love-letter-page, .love-map-page').forEach(page => {
                 page.classList.remove('active');
             });
             document.getElementById('mainHub').classList.add('active');
@@ -1387,6 +1463,11 @@
         function closeModal() {
             document.getElementById('imageModal').classList.remove('active');
         }
+
+        function goToLoveMap() {
+    document.getElementById('mainHub').classList.remove('active');
+    document.getElementById('loveMapPage').classList.add('active'); 
+        }   
     </script>
 </body>
 </html>
