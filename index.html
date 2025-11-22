@@ -1006,7 +1006,7 @@
                 </p>
                 <br>
                 <p>
-                    KBBQ is always so good w/ you and you are def a Shabu affiliate. Also, Wilmington is not too bad when we are together and we have to repeat that bike ride in the marsh once it gets a bit warmer (hopefully we will get a bike for free again). And don’t get me started on Houston’s, new #1 fav place.
+                    KBBQ is always so good w/ you and you are def a Shabu affiliate. Also, Wilmington is not too bad when we are together and we have to run back that bike ride in the marsh once it gets a bit warmer (hopefully we will get a bike for free again). And don’t get me started on Houston’s, new #1 fav place.
                 </p>
                 <br>
                 <p>
@@ -1328,29 +1328,27 @@
             'images/Stickers/F1441B76-BDAA-45E8-99B3-261735411AC2.png'
         ];
         
+        let currentStickerIndex = 0;
+
         function getRandomSticker() {
             const display = document.getElementById('stickerDisplay');
-            const randomSticker = bellaStickers[Math.floor(Math.random() * bellaStickers.length)];
+            const currentSticker = bellaStickers[currentStickerIndex];
             
             // Clear previous content
             display.innerHTML = '';
             
-            // Check if it's a .heics file (won't work in browser)
-            if (randomSticker.endsWith('.heics')) {
-                display.innerHTML = '<div style="font-size: 1.2em; padding: 20px;">⚠️ HEICS format not supported.<br>Please convert to PNG/JPG</div>';
-                return;
-            }
-            
             // Create and display image
             const img = document.createElement('img');
-            img.src = randomSticker;
+            img.src = currentSticker;
             img.style.maxWidth = '100%';
             img.style.maxHeight = '100%';
             img.style.objectFit = 'contain';
             img.alt = 'Bella Sticker';
             display.appendChild(img);
+            
+            // Move to next sticker, loop back to start when done
+            currentStickerIndex = (currentStickerIndex + 1) % bellaStickers.length;
         }
-
         function loadAllStickers() {
             const grid = document.getElementById('stickersGrid');
             grid.innerHTML = ''; // Clear existing
